@@ -1,14 +1,14 @@
 ## views.py
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
-from farmers_assistant.main import app, db
-from farmers_assistant.models import User, Weather, Advice, Reminder
-from farmers_assistant.services import WeatherService, AdviceService, ReminderService
+from main import app, db
+from models import User, Weather, Advice, Reminder
+from services import WeatherService, AdviceService, ReminderService
 from werkzeug.security import check_password_hash
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('html/home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -21,7 +21,7 @@ def login():
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid username or password.')
-    return render_template('login.html')
+    return render_template('html/login.html')
 
 @app.route('/logout')
 @login_required
@@ -40,7 +40,7 @@ def register():
         db.session.commit()
         login_user(user)
         return redirect(url_for('dashboard'))
-    return render_template('register.html')
+    return render_template('html/register.html')
 
 @app.route('/dashboard')
 @login_required
@@ -51,4 +51,4 @@ def dashboard():
     advices = advice_service.get_advice()
     reminder_service = ReminderService(current_user.reminders)
     reminders = reminder_service.get_reminders()
-    return render_template('dashboard.html', weather=weather_service.weather, advices=advices, reminders=reminders)
+    return render_template('html/dashboard.html', weather=weather_service.weather, advices=advices, reminders=reminders)

@@ -20,21 +20,24 @@ except Exception as e:
 
 # Import views after app is initialized to avoid circular imports
 try:
-    from farmers_assistant import views
+#    from farmers_assistant import views
+    import views
+
 except ImportError as e:
     print("Failed to import views. Error: ", str(e))
     exit(1)
 
 # Create all database tables
-try:
-    db.create_all()
-except Exception as e:
-    print("Failed to create database tables. Error: ", str(e))
-    exit(1)
+with app.app_context():
+    try:
+        db.create_all()
+    except Exception as e:
+        print("Failed to create database tables. Error: ", str(e))
+        exit(1)
 
 if __name__ == "__main__":
     try:
-        app.run(debug=True)
+        app.run(debug=True,host="172.16.5.4")
     except Exception as e:
         print("Failed to run the app. Error: ", str(e))
         exit(1)
