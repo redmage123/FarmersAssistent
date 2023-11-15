@@ -3,8 +3,8 @@ from flask import current_app
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from main import app, db
-from models import User, Weather, Advice, Reminder
-from services.services import WeatherService, AdviceService, ReminderService
+from models.models import User, Weather, Advice, Reminder
+from services.services.services import WeatherService, AdviceService, ReminderService
 from werkzeug.security import check_password_hash
 
 @app.route('/')

@@ -21,7 +21,7 @@ except Exception as e:
 # Import views after app is initialized to avoid circular imports
 try:
 #    from farmers_assistant import views
-    import views
+    from templates import views
 
 
 except ImportError as e:
