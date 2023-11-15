@@ -23,9 +23,11 @@ try:
 #    from farmers_assistant import views
     import views
 
+
 except ImportError as e:
     print("Failed to import views. Error: ", str(e))
     exit(1)
+print (dir(views))
 
 # Create all database tables
 with app.app_context():
@@ -37,7 +39,7 @@ with app.app_context():
 
 if __name__ == "__main__":
     try:
-        app.run(debug=True,host="172.16.5.4")
+        app.run(debug=True)
     except Exception as e:
         print("Failed to run the app. Error: ", str(e))
         exit(1)
