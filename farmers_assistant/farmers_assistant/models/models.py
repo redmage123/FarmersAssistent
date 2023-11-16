@@ -1,11 +1,13 @@
 ## models.py
+from .. import db
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
@@ -24,6 +26,9 @@ class User(db.Model):
         pref = Preference.query.filter_by(name=preference, user_id=self.id).first()
         if pref:
             self.preferences.remove(pref)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class Preference(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -60,3 +65,4 @@ class Reminder(db.Model):
     def __init__(self, reminder: str, date: datetime):
         self.reminder = reminder
         self.date = date
+

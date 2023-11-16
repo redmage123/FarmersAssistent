@@ -5,6 +5,7 @@ from flask_login import login_user, logout_user, login_required
 from werkzeug.security import check_password_hash
 from ..models.models import User, Weather, Advice, Reminder
 from ..services.services import WeatherService, AdviceService, ReminderService
+from .. import db
 
 # Create a Blueprint for this module
 views_blueprint = Blueprint('views', __name__)
