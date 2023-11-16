@@ -15,6 +15,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///farmers_assistant.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
+    app.secret_key = '12345'
     # Initialize SQLAlchemy with app context
     db.init_app(app)
 

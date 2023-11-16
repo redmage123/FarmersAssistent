@@ -5,13 +5,13 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-# db = SQLAlchemy()
-
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
     email = db.Column(db.String(100), unique=True, nullable=False)
+    location = db.Column(db.String(10))
+    reminders = {}
     preferences = db.relationship('Preference', backref='user', lazy=True)
 
     def __init__(self, username: str, password: str, email: str):

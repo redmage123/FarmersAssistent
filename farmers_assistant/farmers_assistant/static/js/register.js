@@ -3,6 +3,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
 
     var username = document.getElementById('username').value;
     var email = document.getElementById('email').value;
+    var location = document.getElementById('location').value;
     var password = document.getElementById('password').value;
 
     fetch('/register', {
@@ -10,7 +11,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: 'username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password)
+        body: 'username=' + encodeURIComponent(username) + '&email=' + encodeURIComponent(email) + 'location' + encodeURIComponent(location) + '&password=' + encodeURIComponent(password)
     })
     .then(response => {
         if (response.ok) {
