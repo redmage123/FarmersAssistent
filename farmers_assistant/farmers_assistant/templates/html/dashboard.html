@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - FarmersAssistent</title>
-    <link rel="stylesheet" href="../css/dashboard-style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home-style.css') }}">
 </head>
 <body>
     <div class="dashboard-container">
@@ -22,7 +22,7 @@
             <!-- Reminders will be loaded here -->
         </div>
     </div>
-    <script src="../js/dashboard.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>
 

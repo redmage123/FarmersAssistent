@@ -23,8 +23,8 @@ def create_app():
     login_manager.init_app(app)
 
     # Import and register Blueprints here
-    # Assuming you have a views blueprint in your views directory
-    from .views.views import views_blueprint
+    # Assuming you have a views blueprint in your templates directory
+    from .templates import views as views_blueprint
     app.register_blueprint(views_blueprint)
 
     # Setup login manager user loader
@@ -38,4 +38,3 @@ def create_app():
         db.create_all()
 
     return app
-

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout - FarmersAssistent</title>
-    <link rel="stylesheet" href="../css/logout-style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logout-style.css') }}">
 </head>
 <body>
     <div class="logout-container">
         <h2>Are you sure you want to logout?</h2>
         <button id="logout-button">Logout</button>
     </div>
-    <script src="../js/logout.js"></script>
+    <script src="{{ url_for('static', filename='js/logout.js') }}"></script>
 </body>
 </html>
 

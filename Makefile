@@ -71,6 +71,12 @@ help:
 	@echo "  clean                - Clean up the project (remove virtual environment)"
 	@echo "  help                 - Display this help message"
 
+debug:
+	export FLASK_ENV=development
+	$(call check_venv)
+	@echo "Running Flask application..."
+	FLASK_APP=$(SRC_DIR)/main.py $(FLASK) run --debug
+
 # Phony targets are not files
 .PHONY: default setup run lint format rebuild-requirements clean help
 
